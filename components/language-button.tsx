@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,7 +25,6 @@ interface LanguageButtonProps {
 
 export function LanguageButton({ currentLang }: LanguageButtonProps) {
   const router = useRouter();
-  const pathname = usePathname();
   const { i18n } = useTranslation();
   const currentLanguage = languages[currentLang as keyof typeof languages] || languages.en;
 

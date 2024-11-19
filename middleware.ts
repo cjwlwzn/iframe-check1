@@ -2,17 +2,17 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
-import { languages } from '@/app/i18n/settings';
+import { languages as supportedLanguages } from '@/app/i18n/settings';
 
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  const locales = languages;
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-  
+  const locales = supportedLanguages;
+  const browserLanguages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
   try {
-    const locale = matchLocale(languages, locales, 'en');
+    const locale = matchLocale(browserLanguages, locales, 'en');
     return locale;
   } catch (e) {
     return 'en';
@@ -21,9 +21,21 @@ function getLocale(request: NextRequest): string {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  
+
+  // Skip static files
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.includes('/api/') ||
+    pathname.endsWith('.xml') ||
+    pathname.endsWith('.txt') ||
+    pathname.endsWith('.ico') ||
+    pathname.endsWith('.svg')
+  ) {
+    return NextResponse.next();
+  }
+
   // Check if the pathname starts with a locale
-  const pathnameIsMissingLocale = languages.every(
+  const pathnameIsMissingLocale = supportedLanguages.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
@@ -40,11 +52,12 @@ export function middleware(request: NextRequest) {
     
     return NextResponse.redirect(newUrl);
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!api|_next/static|_next/image|favicon.svg|robots.txt|sitemap.xml).*)',
+    '/((?!_next/static|_next/image|favicon.svg|robots.txt).*)',
   ],
 };

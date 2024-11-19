@@ -5,6 +5,7 @@
   "checkButton": "Check Website",
   "checking": "Checking...",
   "iframeResult": "IFrame Result",
+  "enterUrlToTest": "Enter a URL above to test iframe embedding",
   "invalidUrl": "Please enter a valid URL starting with http:// or https://",
   "accessDenied": "Website blocked iframe embedding.",
   "loadError": "Failed to load the website.",

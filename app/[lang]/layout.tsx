@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { languages } from '../i18n/settings';
 import { ThemeProvider } from '@/components/theme-provider';
 import { LanguageProvider } from '@/components/language-provider';
+import { Analytics } from '@/components/analytics';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -39,6 +40,7 @@ export default function LocaleLayout({
             {children}
           </LanguageProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  trailingSlash: true,
   images: { 
     unoptimized: true,
     remotePatterns: [
@@ -15,8 +16,7 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
-  swcMinify: false
+  }
 };
 
 module.exports = nextConfig;
