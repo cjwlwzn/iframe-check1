@@ -1,0 +1,9 @@
+{
+  "title": "IFrame 검사기",
+  "description": "웹사이트를 iframe에 포함할 수 있는지 확인",
+  "urlPlaceholder": "웹사이트 URL 입력 (예: https://example.com)",
+  "checkButton": "웹사이트 확인",
+  "iframeResult": "IFrame 결과",
+  "errorMessage": "iframe에서 웹사이트를 로드할 수 없습니다. X-Frame-Options 또는 Content Security Policy 제한 때문일 수 있습니다.",
+  "footer": "모든 웹사이트의 iframe 호환성을 즉시 테스트"
+}

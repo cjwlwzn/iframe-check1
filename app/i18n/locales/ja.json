@@ -1,0 +1,9 @@
+{
+  "title": "IFrameチェッカー",
+  "description": "ウェブサイトがiframeに埋め込み可能かチェック",
+  "urlPlaceholder": "ウェブサイトのURLを入力 (例: https://example.com)",
+  "checkButton": "チェック開始",
+  "iframeResult": "IFrame結果",
+  "errorMessage": "iframeでウェブサイトを読み込めません。X-Frame-OptionsまたはContent Security Policyの制限が原因の可能性があります。",
+  "footer": "あらゆるウェブサイトのiframe互換性を即座にテスト"
+}

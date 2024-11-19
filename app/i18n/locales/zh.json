@@ -1,0 +1,10 @@
+{
+  "title": "IFrame 检查工具",
+  "description": "检查网站是否可以在iframe中嵌入",
+  "urlPlaceholder": "输入网站网址 (例如: https://example.com)",
+  "checkButton": "检查网站",
+  "iframeResult": "IFrame 结果",
+  "errorMessage": "无法在iframe中加载网站。这可能是由于X-Frame-Options或内容安全策略限制。",
+  "footer": "即时测试任何网站的iframe兼容性",
+  "copyright": "保留所有权利。用❤️为全球开发者精心打造。"
+}

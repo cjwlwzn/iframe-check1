@@ -1,0 +1,9 @@
+{
+  "title": "Vérificateur d'IFrame",
+  "description": "Vérifiez si un site web peut être intégré dans un iframe",
+  "urlPlaceholder": "Entrez l'URL du site (ex: https://example.com)",
+  "checkButton": "Vérifier le site",
+  "iframeResult": "Résultat IFrame",
+  "errorMessage": "Impossible de charger le site dans l'iframe. Cela peut être dû aux restrictions X-Frame-Options ou Content Security Policy.",
+  "footer": "Testez instantanément la compatibilité iframe de n'importe quel site"
+}

@@ -1,0 +1,9 @@
+{
+  "title": "IFrame-Prüfer",
+  "description": "Prüfen Sie, ob eine Website in einem iframe eingebettet werden kann",
+  "urlPlaceholder": "Website-URL eingeben (z.B.: https://example.com)",
+  "checkButton": "Website prüfen",
+  "iframeResult": "IFrame-Ergebnis",
+  "errorMessage": "Website kann nicht im iframe geladen werden. Dies kann an X-Frame-Options oder Content Security Policy Einschränkungen liegen.",
+  "footer": "Testen Sie sofort die iframe-Kompatibilität jeder Website"
+}
