@@ -3,13 +3,13 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AlertCircle } from 'lucide-react';
-import Image from 'next/image';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { LanguageButton } from '@/components/language-button';
 import { UrlInput } from '@/components/url-input';
 import { IframeCodeExamples } from '@/components/iframe-code-examples';
 import { InfoSections } from '@/components/info-sections';
 import { Footer } from '@/components/footer';
+import Image from 'next/image';
 
 export default function Home({
   params: { lang },
@@ -24,6 +24,7 @@ export default function Home({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeStatus, setIframeStatus] = useState<string>('');
   const [blockReason, setBlockReason] = useState<string | null>(null);
+  const [key, setKey] = useState(0);
 
   const handleCheck = () => {
     if (!inputUrl) {
@@ -31,10 +32,16 @@ export default function Home({
       return;
     }
 
+    // Reset states
     setLoading(true);
     setError(null);
     setBlockReason(null);
     setIframeStatus(t('loading'));
+    
+    // Force iframe reload by updating key
+    setKey(prev => prev + 1);
+    
+    // Update URL
     setUrl(inputUrl);
   };
 
@@ -112,15 +119,22 @@ export default function Home({
                   </span>
                 )}
               </div>
-              <div className="max-w-[1000px] mx-auto bg-background rounded border border-border relative">
-                <iframe
-                  ref={iframeRef}
-                  src={url}
-                  className="w-full h-[500px]"
-                  sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
-                  onLoad={handleIframeLoad}
-                  onError={handleIframeError}
-                />
+              <div className="max-w-[1000px] mx-auto bg-background rounded border border-border relative min-h-[500px]">
+                {url ? (
+                  <iframe
+                    key={key}
+                    ref={iframeRef}
+                    src={url}
+                    className="w-full h-[500px]"
+                    sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+                    onLoad={handleIframeLoad}
+                    onError={handleIframeError}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+                    {t('enterUrlToTest')}
+                  </div>
+                )}
                 {loading && (
                   <div className="absolute inset-0 flex items-center justify-center bg-background/50">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
