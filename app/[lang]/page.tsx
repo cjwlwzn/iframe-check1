@@ -54,12 +54,12 @@ export default function Home({
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-muted">
-      <main className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <nav className="flex justify-between items-center mb-8">
+      <header className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-sm z-50 border-b border-border">
+        <div className="container mx-auto px-4">
+          <nav className="h-16 flex justify-between items-center">
             <a 
               href={`/${lang}`}
-              className="flex items-center gap-3 text-primary hover:text-primary/90"
+              className="flex items-center gap-2 text-primary hover:text-primary/90"
             >
               <Image
                 src="/logo.png"
@@ -67,12 +67,17 @@ export default function Home({
                 width={32}
                 height={32}
                 className="w-8 h-8"
+                priority
               />
-              <span className="font-semibold text-lg">iframecheck.online</span>
+              <span className="text-xl font-semibold leading-none">iframecheck.online</span>
             </a>
             <LanguageButton currentLang={lang} />
           </nav>
-          
+        </div>
+      </header>
+
+      <main className="flex-grow pt-24">
+        <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center space-y-4">
               <h1 className="text-4xl font-bold text-primary">{t('title')}</h1>

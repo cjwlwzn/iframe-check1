@@ -34,10 +34,7 @@ export function LanguageButton({ currentLang }: LanguageButtonProps) {
     await i18n.changeLanguage(lang);
     
     // Update URL
-    const segments = pathname.split('/');
-    segments[1] = lang;
-    const newPath = segments.join('/');
-    router.push(newPath);
+    router.push(`/${lang}`);
   };
 
   return (
